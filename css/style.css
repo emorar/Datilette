@@ -1,6 +1,173 @@
-header nav{
-    background: #FFDD9E;
+/* style.css */
+
+/* --- Importación de Fuentes --- */
+/* font-family: 'Pacifico', cursive; (Para títulos dulces) */
+/* font-family: 'Quicksand', sans-serif; (Para texto general) */
+
+/* --- Variables CSS para colores (¡ACTUALIZADAS!) --- */
+:root {
+    --primary-color: #FFDD9E; /* ¡NUEVO COLOR INSTITUCIONAL como primario! */
+    --secondary-color: #F5DEB3; /* Beige suave o crema (cercano al institucional) */
+    --accent-color: #8B4513; /* Un café más oscuro para contraste con el institucional */
+    --dark-official-navbar: #343a40; /* Color oficial del navbar de Bootstrap 4 (gris oscuro) */
+    --datilette-primary-text: #4A2B1D; /* Café oscuro para textos y elementos de marca (ideal para el fondo claro) */
+    --light-custom: #FFFFFF; /* Blanco */
+    --whatsapp-green: #25D366; /* Verde de WhatsApp */
 }
-main{
-    background: #FFDD9E;
+
+/* --- Estilos Generales del Cuerpo (Fondo, Fuentes, Colores) --- */
+body {
+    font-family: 'Quicksand', sans-serif;
+    /* Degradado utilizando el color institucional */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: var(--datilette-primary-text); /* El texto oscuro se verá bien sobre el fondo claro */
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* --- Header y Navbar (sin cambios significativos en color, mantiene el oficial) --- */
+.bg-dark-original {
+    background-color: var(--dark-official-navbar) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand .brand-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    color: var(--light-custom);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-nav .nav-link {
+    color: var(--light-custom) !important;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color) !important; /* Ahora el hover usa el color institucional */
+    transform: translateY(-2px);
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: var(--primary-color) !important; /* La pestaña activa usa el color institucional */
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* --- Sección Principal (Main Content) --- */
+.main-content-section {
+    padding-top: 80px;
+    background-size: cover;
+    background-position: center;
+    min-height: calc(100vh - 120px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto de partículas de fondo (ajustado color si es necesario) */
+.main-content-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Partículas blancas se verán bien en el nuevo fondo claro */
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="5" fill="%23FFFFFF" opacity="0.2"/></svg>');
+    background-size: 20px 20px;
+    animation: moveParticles 60s linear infinite;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+@keyframes moveParticles {
+    from { background-position: 0 0; }
+    to { background-position: 100vw 100vh; }
+}
+
+
+/* --- Card Central --- */
+.card {
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco con transparencia (claro para el institucional) */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: none !important;
+}
+
+.text-datilette-primary-text {
+    color: var(--datilette-primary-text) !important; /* Texto principal oscuro sobre fondo claro */
+    font-family: 'Pacifico', cursive;
+}
+
+.card-body img {
+    border-radius: 10px;
+    max-height: 500px;
+    object-fit: contain;
+    width: 100%;
+}
+
+.card-footer {
+    background-color: transparent !important;
+    border-top: none !important;
+}
+
+/* --- Botones de Redes Sociales (ajustados para el color institucional) --- */
+.social-links .btn {
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-links .btn-outline-secondary { /* Botón de Instagram */
+    color: var(--datilette-primary-text); /* Color del texto oscuro */
+    border-color: var(--datilette-primary-text); /* Borde oscuro */
+}
+.social-links .btn-outline-secondary:hover {
+    background-color: var(--datilette-primary-text); /* Fondo oscuro al hover */
+    color: var(--light-custom); /* Texto blanco al hover */
+    transform: translateY(-3px);
+}
+
+.social-links .btn-outline-success { /* Botón de WhatsApp */
+    color: var(--whatsapp-green); /* Verde WhatsApp */
+    border-color: var(--whatsapp-green);
+}
+.social-links .btn-outline-success:hover {
+    background-color: var(--whatsapp-green);
+    color: var(--light-custom);
+    transform: translateY(-3px);
+}
+
+/* Iconos de Font Awesome */
+.social-links .fab {
+    margin-right: 8px;
+}
+
+/* --- Footer --- */
+.footer-custom {
+    background-color: var(--datilette-primary-text); /* El footer será de color café oscuro para contraste */
+    color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Media Queries para Responsividad --- */
+@media (max-width: 768px) {
+    .navbar-brand .brand-text {
+        font-size: 1.5rem;
+    }
+    .card-header p {
+        font-size: 2.5rem !important;
+    }
+    .social-links .btn {
+        margin: 5px 0;
+        width: 100%;
+    }
 }
